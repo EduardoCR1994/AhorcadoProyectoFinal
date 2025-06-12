@@ -15,25 +15,53 @@
 
 ## Diagrama de Base de Datos (Mermaid)
 
+# Modelo de Base de Datos
+
+A continuación se presenta el modelo entidad-relación utilizado para el desarrollo del juego Ahorcado.
+
 ```mermaid
 erDiagram
-    Jugadores {
-        INT IdJugador PK
-        BIGINT Cedula
+    Jugador {
+        INT Identificacion PK
         NVARCHAR Nombre
     }
-    Palabras {
-        INT IdPalabra PK
-        NVARCHAR PalabraTexto
+
+    Palabra {
+        INT PalabraID PK
+        NVARCHAR Texto
+        NVARCHAR TextoNormalizado
+        BIT TieneTilde
+        BIT Usada
     }
-    Partidas {
-        INT IdPartida PK
-        INT IdJugador FK
-        INT IdPalabra FK
+
+    Partida {
+        INT PartidaID PK
+        INT JugadorID FK
+        INT PalabraID FK
         NVARCHAR Nivel
+        DATETIME FechaInicio
+        INT DuracionSegundos
         NVARCHAR Resultado
-        DATETIME FechaHora
     }
-    Jugadores ||--o{ Partidas : juega
-    Palabras ||--o{ Partidas : contiene
+
+    Intento {
+        INT IntentoID PK
+        INT PartidaID FK
+        CHAR Letra
+        BIT EsCorrecta
+        DATETIME FechaIntento
+    }
+
+    Escalafon {
+        INT Identificacion
+        NVARCHAR Nombre
+        INT Marcador
+        INT Ganadas
+        INT Perdidas
+    }
+
+    Jugador ||--o{ Partida : juega
+    Palabra ||--o{ Partida : contiene
+    Partida ||--o{ Intento : tiene
+    Jugador ||--o{ Escalafon : tiene
 
