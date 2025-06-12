@@ -18,21 +18,22 @@
 ```mermaid
 erDiagram
     Jugadores {
-        int IdJugador PK
-        bigint Cedula UNIQUE
-        nvarchar Nombre
+        INT IdJugador PK
+        BIGINT Cedula
+        NVARCHAR Nombre
     }
     Palabras {
-        int IdPalabra PK
-        nvarchar PalabraTexto UNIQUE
+        INT IdPalabra PK
+        NVARCHAR PalabraTexto
     }
     Partidas {
-        int IdPartida PK
-        int IdJugador FK
-        int IdPalabra FK
-        nvarchar Nivel
-        nvarchar Resultado
-        datetime FechaHora
+        INT IdPartida PK
+        INT IdJugador FK
+        INT IdPalabra FK
+        NVARCHAR Nivel
+        NVARCHAR Resultado
+        DATETIME FechaHora
     }
-    Jugadores ||--o{ Partidas : "tiene"
-    Palabras ||--o{ Partidas : "asociada"
+    Jugadores ||--o{ Partidas : juega
+    Palabras ||--o{ Partidas : contiene
+
