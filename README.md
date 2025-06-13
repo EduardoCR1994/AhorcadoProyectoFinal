@@ -5,7 +5,7 @@
 - Castro Rojas Eduardo (FI13005258)
 - Cespedes Morales Brandon Steven (FH22012992)
 - Flores Carmona Jimena (FH23014559)
-- Hidalgo de la O Mariana (FH23015127)
+- Hidalgo De La O Mariana (FH23015127)
 
 ## Tecnología
 
